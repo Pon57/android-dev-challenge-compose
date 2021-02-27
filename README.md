@@ -7,12 +7,7 @@
 
 ## :scroll: Description
 <!--- Describe your app in one or two sentences -->
-
-
-## :bulb: Motivation and Context
-<!--- Optionally point readers to interesting parts of your submission. -->
-<!--- What are you especially proud of? -->
-
+It is a dog and cat adoption app.
 
 ## :camera_flash: Screenshots
 <!-- You can add more screenshots here if you like -->
