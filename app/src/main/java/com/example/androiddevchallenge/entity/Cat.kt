@@ -17,5 +17,6 @@ package com.example.androiddevchallenge.entity
 
 class Cat(
     override val name: String,
-    override val age: Int
+    override val age: Int,
+    override val description: String
 ) : Pet

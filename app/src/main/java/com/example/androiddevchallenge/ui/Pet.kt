@@ -37,10 +37,10 @@ import com.example.androiddevchallenge.entity.Dog
 import com.example.androiddevchallenge.entity.Pet
 
 val dummyPetsList: List<Pet> = listOf(
-    Dog("poti", 2),
-    Cat("tama", 3),
-    Dog("wan", 2),
-    Cat("nya", 3)
+    Dog("poti", 2, "To some, a spirit is an attitude for developing."),
+    Cat("tama", 3, "It is a post-apocalyptic love, sir."),
+    Dog("wan", 2, "Strength ho! vandalize to be tasted."),
+    Cat("nya", 5, "Be playful.")
 )
 
 @Composable
@@ -55,7 +55,9 @@ fun PetsList(navController: NavController, pets: List<Pet>, modifier: Modifier =
                                 onClick = {
                                     navController.navigate("pet/$index")
                                 },
-                                Modifier.fillMaxWidth().padding(4.dp)
+                                Modifier
+                                    .fillMaxWidth()
+                                    .padding(4.dp)
                             ) {
                                 when (pet) {
                                     is Dog -> Text(text = "\uD83D\uDC36")
@@ -91,10 +93,34 @@ fun PetDetail(petIndex: Int, modifier: Modifier = Modifier) {
                     style = TextStyle(fontSize = 50.sp)
                 )
             }
-            Text(
-                text = "name: ${pet.name} age: ${pet.age}",
-                modifier = modifier.padding(4.dp)
-            )
+            Column(modifier = modifier.padding(4.dp)) {
+                Text(
+                    text = "name",
+                    style = TextStyle(fontSize = 20.sp)
+                )
+                Text(
+                    text = pet.name,
+                    style = TextStyle(fontSize = 20.sp)
+                )
+            }
+
+            Column(modifier = modifier.padding(4.dp)) {
+                Text(
+                    text = "age"
+                )
+                Text(
+                    text = pet.age.toString()
+                )
+            }
+
+            Column(modifier = modifier.padding(4.dp)) {
+                Text(
+                    text = "description"
+                )
+                Text(
+                    text = pet.description
+                )
+            }
         }
     }
 }
