@@ -25,6 +25,9 @@ import androidx.compose.material.Surface
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.navigation.compose.navigate
 import com.example.androiddevchallenge.entity.Cat
@@ -50,12 +53,12 @@ fun PetsList(navController: NavController, pets: List<Pet>, modifier: Modifier =
                                 onClick = {
                                     navController.navigate("pet/$index")
                                 },
-                                Modifier.fillMaxWidth()
+                                Modifier.fillMaxWidth().padding(4.dp)
                             ) {
                                 when (pet) {
                                     is Dog -> Text(text = "\uD83D\uDC36")
                                     is Cat -> Text(text = "\uD83D\uDE40")
-                                } // Icons.Filled.Star
+                                }
                                 Text(text = "name: ${pet.name} age: ${pet.age}")
                             }
                         }
@@ -72,14 +75,29 @@ fun PreviewPetsList(navController: NavController) {
 }
 
 @Composable
-fun PetDetail(navController: NavController, petIndex: Int, modifier: Modifier = Modifier) {
+fun PetDetail(petIndex: Int, modifier: Modifier = Modifier) {
     Surface(color = MaterialTheme.colors.background) {
         val pet = dummyPetsList[petIndex]
-        Text(text = "name: ${pet.name} age: ${pet.age}")
+        Column {
+            when (pet) {
+                is Dog -> Text(
+                    text = "\uD83D\uDC36",
+                    style = TextStyle(fontSize = 50.sp)
+                )
+                is Cat -> Text(
+                    text = "\uD83D\uDE40",
+                    style = TextStyle(fontSize = 50.sp)
+                )
+            }
+            Text(
+                text = "name: ${pet.name} age: ${pet.age}",
+                modifier = modifier.padding(4.dp)
+            )
+        }
     }
 }
 
 @Composable
-fun PreviewPetDetail(navController: NavController, petIndex: Int) {
-    PetDetail(navController, petIndex = petIndex)
+fun PreviewPetDetail(petIndex: Int) {
+    PetDetail(petIndex = petIndex)
 }

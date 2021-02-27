@@ -53,7 +53,7 @@ fun App() {
             arguments = listOf(navArgument("petIndex") { type = NavType.IntType })
         ) { backStackEntry ->
             backStackEntry.arguments?.getInt("petIndex")?.let {
-                PreviewPetDetail(navController, it)
+                PreviewPetDetail(it)
             }
         }
     }
